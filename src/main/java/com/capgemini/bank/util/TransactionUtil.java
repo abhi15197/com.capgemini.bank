@@ -6,12 +6,16 @@ import java.util.LinkedHashMap;
 import com.capgemini.bank.bean.Transaction;
 
 public class TransactionUtil {
+	private TransactionUtil()
+	{
+		
+	}
 	private static LinkedHashMap<String,Transaction> transactions= new LinkedHashMap<String, Transaction>();
 	static {
 		//predefined data in the collection of account to work on during the project
 		//this is a static data used by all the objects of bean class and onther methods
 		//this data contains all the details of the user account which are needed during the project 
-		SimpleDateFormat format=new SimpleDateFormat("dd-mm-yyyy");//->date format to get the required date from the string
+		SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");//->date format to get the required date from the string
 		try {
 			transactions.put("Tran0001", new Transaction(format.parse("15-02-2019"), "300080705005","by cash", "credit", 25000.00,25000.00));
 			transactions.put("Tran0002", new Transaction(format.parse("15-03-2019"), "300080705008","by cash", "credit", 25000.00,25000.00));

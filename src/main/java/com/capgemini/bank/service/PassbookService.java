@@ -13,35 +13,29 @@ public class PassbookService implements IPassbookService{
 	
 	//method to call the  update passbook in dao
 	@Override
-	public void updatePassbook(String acc_num) 
+	public void updatePassbook(String accountnumber) 
 	{	
-			Date last_update_date=account.getLastPassbookUpdateDate(acc_num);
-			transaction.updatePassbook(acc_num,last_update_date);
+			Date lastUpdateDate=account.getLastPassbookUpdateDate(accountnumber);
+			transaction.updatePassbook(accountnumber,lastUpdateDate);
 	}
 	
 	
 	//method to verify the account entered  is present in the collection
 	//this will call the method verifyAccount in dao
 	@Override
-	public boolean verifyAccountService(String acc_num)
+	public boolean verifyAccountService(String accountnumber)
 	{
-		if(account.verifyAccount(acc_num))
-		{	
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return account.verifyAccount(accountnumber);
+		
 	}
 	
 	
 	
 	//method to call the dao method to print the account summary
 	@Override
-	public void accountSummary(String acc_num, Date fromDate, Date toDate) 
+	public void accountSummary(String accountnumber, Date fromDate, Date toDate) 
 	{
-		transaction.accountSummary(acc_num, fromDate, toDate);
+		transaction.accountSummary(accountnumber, fromDate, toDate);
 	}
 	  
 

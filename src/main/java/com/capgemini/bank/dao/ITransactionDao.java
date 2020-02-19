@@ -8,11 +8,11 @@ import com.capgemini.bank.bean.Transaction;
 
 public interface ITransactionDao {
 	
-	public void updatePassbook(String acc_num, Date last_update_date);
+	public void updatePassbook(String accountnumber, Date lastUpdateDate);
 	
 	public TreeMap<String, Transaction> forSortedMap(Map<String,Transaction> map);
 	
-	public void accountSummary(String acc_num, Date fromDate, Date toDate);
+	public void accountSummary(String accountnumber, Date fromDate, Date toDate);
 	
-	public void updateBalance(String acc_num);
+	public void updateBalance(String accountnumber);
 }

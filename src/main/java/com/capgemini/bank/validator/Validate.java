@@ -3,28 +3,17 @@ package com.capgemini.bank.validator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.InputMismatchException;
 
 public interface Validate {
-	String account_number_pattern="^[1-9][0-9]{11}";
-	SimpleDateFormat dateformat = new SimpleDateFormat("dd-mm-yyyy");
+	String ACCOUNT_NUMBER_PATTERN="^[1-9][0-9]{11}";
+	SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd-MM-yyyy");
+	String CHOICE_PATTERN="^[0-9]*";
 
 	public static boolean validatePattern(String data,String pattern)
 	{
 		return data.matches(pattern);
 	}
-	public static boolean choiceValidator(String choice) 
-	{
-		try{
-			Integer.parseInt(choice);
-			return true;
-		}
-		catch(InputMismatchException e)
-		{	
-			return false;
-		}
-		
-	}
+
 	
 	public static Date dateValidator(String dateToValidate)
 	{
@@ -33,8 +22,8 @@ public interface Validate {
 		}
 		try {
 			//if not valid, it will throw ParseException
-			Date date=dateformat.parse(dateToValidate);
-			Date now=dateformat.parse(dateformat.format(new Date()));
+			Date date=DATEFORMAT.parse(dateToValidate);
+			Date now=DATEFORMAT.parse(DATEFORMAT.format(new Date()));
 			if(date.after(now))
 			{		
 					return null;}

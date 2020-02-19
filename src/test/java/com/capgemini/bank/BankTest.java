@@ -1,19 +1,32 @@
 package com.capgemini.bank;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.jupiter.api.Test;
+
 import com.capgemini.bank.dao.AccountsDao;
+import com.capgemini.bank.dao.TransactionDao;
 import com.capgemini.bank.service.PassbookService;
+import com.capgemini.bank.ui.Client;
 import com.capgemini.bank.util.AccountsUtil;
 import com.capgemini.bank.util.TransactionUtil;
 import com.capgemini.bank.validator.Validate;
 
+
+
+
 public class BankTest {
+	
 PassbookService service=new PassbookService();
 AccountsDao obj1=new AccountsDao();
+TransactionDao obj2=new TransactionDao();
+Client obj3=new Client();
+
+		//Class service=Class.forName(PassbookService);
+		//Class service=Class.forName(AccountsDao);
 	
 
 
@@ -65,17 +78,36 @@ AccountsDao obj1=new AccountsDao();
 	@Test
 	public void getPassbookUpdateDateDAOTest() {
 		String validaccountnumber="300080705005";
-		SimpleDateFormat sdf=new SimpleDateFormat("dd-mm-yyyy");
+		SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
 		try {
-			validdate = sdf.parse("15-02-2017");
+			validdate = sdf.parse("18-02-2017");
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		assertEquals(validdate,obj1.getLastPassbookUpdateDate(validaccountnumber));
 	}
+	
+	
+	
+	@Test
+	public void updateBalanceDaoTest()
+	{
+		assertEquals(17000.0,obj2.updateBalance("300080705006"));
+	}
 
+	@Test
+	public void getAccountDetailsDaoTest()
+	{
+		assertTrue(obj1.getAccountDetails("300080705006"));
+	}
 	
 	
+	SimpleDateFormat sdf=new SimpleDateFormat("dd-MM-yyyy");
+	@Test
+	public void accountSummaryDaoTest() throws ParseException
+	{
+		assertTrue(obj2.accountSummary("300080705006", sdf.parse("15-01-2019"), sdf.parse("20-12-2019")));
+	}
 	
 	
 	//test to validate if the getAccount method in util class returns the collection or not
@@ -84,6 +116,7 @@ AccountsDao obj1=new AccountsDao();
 	{
 		assertFalse(AccountsUtil.getAccount().isEmpty());
 	}
+	
 	
 	
 	
@@ -99,16 +132,16 @@ AccountsDao obj1=new AccountsDao();
 	
 	@Test
 	public void validatePatternTest()
-	{
-		assertTrue(Validate.validatePattern("121212121212", Validate.account_number_pattern));
-		assertFalse(Validate.validatePattern("151515", Validate.account_number_pattern));
+	{	//validates if acccount number entered by the user is of 12 size of length also checks if it is a number  
+		assertTrue(Validate.validatePattern("121212121212", Validate.ACCOUNT_NUMBER_PATTERN));
+		assertFalse(Validate.validatePattern("151515", Validate.ACCOUNT_NUMBER_PATTERN));
+		
+		
+		//validate the choice entered by user is number or not
+		assertTrue(Validate.validatePattern("15151",Validate.CHOICE_PATTERN));
+		assertFalse(Validate.validatePattern("adssds",Validate.CHOICE_PATTERN));
 	}
 	
-	@Test
-	public void choiceValidatorTest()
-	{
-		assertTrue(Validate.choiceValidator("1"));
-		
-	}
+	
 
 }

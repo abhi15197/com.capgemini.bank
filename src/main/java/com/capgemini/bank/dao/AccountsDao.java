@@ -11,15 +11,9 @@ public class AccountsDao implements IAcoountsDao{
 	
 	//method to verify the account if it exists or not in the collection
 	//returns true if present else returns false
-	public boolean verifyAccount(String acc_num) {
+	public boolean verifyAccount(String accountnumber) {
 		
-		if(account.containsKey(acc_num))
-		{
-			
-			return true;
-		}
-		else
-			return false;
+		return account.containsKey(accountnumber);
 		
 	}
 	
@@ -27,26 +21,39 @@ public class AccountsDao implements IAcoountsDao{
 	
 	//method to get the last passbook update date
 	//this method returns the date when the passbook last updated
-	public Date getLastPassbookUpdateDate(String acc_num)
+	public Date getLastPassbookUpdateDate(String accountnumber)
 	{	
-		return account.get(acc_num).getLast_passbook_update_date();
+		return account.get(accountnumber).getLastPassbookUpdateDate();
 		
 	}
 	
 	
 	//method to set the last update date to the present day after the passbook is updated
-	public void setLastPassbookUpdateDate(String acc_num)
+	public void setLastPassbookUpdateDate(String accountnumber)
 	{	
-		account.get(acc_num).setLast_passbook_update_date(new Date());
+		account.get(accountnumber).setLastPassbookUpdateDate(new Date());
 		
 	}
 	
 	
 	
 	//method to update the balance in the collection 
-	public void updateBalance(String acc_num,double balance)
+	public void updateBalance(String accountnumber,double balance)
 	{
-		account.get(acc_num).setBalance(balance);
+		account.get(accountnumber).setBalance(balance);
+	}
+	
+	public boolean getAccountDetails(String accountnumber)
+	{
+		System.out.println("NAME OF ACCOUNT HOLDER:"+account.get(accountnumber).getFirstName()+
+				" "+account.get(accountnumber).getLastName());
+		System.out.println("ACCOUNT NUMBER:"+account.get(accountnumber).getAccountNumber());
+		System.out.println("BALANCE:"+account.get(accountnumber).getBalance());
+		System.out.println("=================================================================================");
+		System.out.println("=================================================================================");
+		
+		return true;
+		
 	}
 
 }

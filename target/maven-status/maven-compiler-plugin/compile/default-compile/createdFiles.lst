@@ -1,0 +1,12 @@
+com\capgemini\bank\dao\AccountsDao.class
+com\capgemini\bank\dao\TransactionDao.class
+com\capgemini\bank\bean\Account.class
+com\capgemini\bank\util\TransactionUtil.class
+com\capgemini\bank\ui\Client.class
+com\capgemini\bank\dao\ITransactionDao.class
+com\capgemini\bank\dao\IAcoountsDao.class
+com\capgemini\bank\validator\Validate.class
+com\capgemini\bank\bean\Transaction.class
+com\capgemini\bank\service\PassbookService.class
+com\capgemini\bank\service\IPassbookService.class
+com\capgemini\bank\util\AccountsUtil.class

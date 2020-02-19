@@ -2,43 +2,40 @@ package com.capgemini.bank.bean;
 import java.util.Date;
 
 public class Transaction {
-	private Date transacton_date;
-	private String account_number;
-	private String transaction_mode;
-	private String transaction_type;
+	private Date transactonDate;
+	private String accountnumber;
+	private String transactionMode;
+	private String transactionType;
 	private double amount;
 	private double balance;
 	
-	public Transaction(Date transacton_date, String account_number, String transaction_mode, String transaction_type,
+	
+	
+	public Transaction(Date transactonDate, String accountnumber, String transactionMode, String transactionType,
 			double amount, double balance) {
 		super();
-		this.transacton_date = transacton_date;
-		this.account_number = account_number;
-		this.transaction_mode = transaction_mode;
-		this.transaction_type = transaction_type;
+		this.transactonDate = transactonDate;
+		this.accountnumber = accountnumber;
+		this.transactionMode = transactionMode;
+		this.transactionType = transactionType;
 		this.amount = amount;
 		this.balance = balance;
 	}
-	
 	public double getBalance() {
 		return balance;
 	}
-	public Date getTransacton_date() {
-		return transacton_date;
-	}
-	public void setTransacton_date(Date transacton_date) {
-		this.transacton_date = transacton_date;
-	}
-	public String getAccount_number() {
-		return account_number;
-	}
 	
-	public String getTransaction_mode() {
-		return transaction_mode;
+	public Date getTransactonDate() {
+		return transactonDate;
+	}	
+	public String getAccountnumber() {
+		return accountnumber;
 	}
-	
-	public String getTransaction_type() {
-		return transaction_type;
+	public String getTransactionMode() {
+		return transactionMode;
+	}
+	public String getTransactionType() {
+		return transactionType;
 	}
 	
 	public double getAmount() {
