@@ -8,16 +8,21 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.capgemini.bank.bean.Account;
 
 public class AccountsUtil {
+	
+	//private constructor to restict the object of the class
 	private AccountsUtil()
 	{
 		
 	}
 	private static Map<String,Account> accounts=new ConcurrentHashMap<String, Account>();
+	
 	//predefined data in the collection of account to work on during the project
 	//this is a static data used by all the objects of bean class and onther methods
 	//this data contains all the details of the user account which are needed during the project 
+	
 	static
-	{	SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");//->date format to get the required date from the string
+	{	SimpleDateFormat format=new SimpleDateFormat("dd-MM-yyyy");
+	//  -------------->  date format to get the required date from the string
 		try {
 			accounts.put("300080705001", new Account("300080705001","Kuldeep","Yadav",25000.00,format.parse("15-02-2018")));
 			accounts.put("300080705002", new Account("300080705002","Shikhar","Dhawan",25000.00,format.parse("15-02-2015")));

@@ -21,12 +21,11 @@ import com.capgemini.bank.validator.Validate;
 public class BankTest {
 	
 PassbookService service=new PassbookService();
-AccountsDao obj1=new AccountsDao();
-TransactionDao obj2=new TransactionDao();
-Client obj3=new Client();
+AccountsDao acoountsdao=new AccountsDao();
+TransactionDao transactiondao=new TransactionDao();
+Client client=new Client();
 
-		//Class service=Class.forName(PassbookService);
-		//Class service=Class.forName(AccountsDao);
+		
 	
 
 
@@ -62,11 +61,11 @@ Client obj3=new Client();
 		String invalidaccountnumber4="any invalid string+1515";
 		
 		
-		assertTrue(obj1.verifyAccount(validaccountnumber));
-		assertFalse(obj1.verifyAccount(invalidaccountnumber1));
-		assertFalse(obj1.verifyAccount(invalidaccountnumber2));
-		assertFalse(obj1.verifyAccount(invalidaccountnumber3));
-		assertFalse(obj1.verifyAccount(invalidaccountnumber4));
+		assertTrue(acoountsdao.verifyAccount(validaccountnumber));
+		assertFalse(acoountsdao.verifyAccount(invalidaccountnumber1));
+		assertFalse(acoountsdao.verifyAccount(invalidaccountnumber2));
+		assertFalse(acoountsdao.verifyAccount(invalidaccountnumber3));
+		assertFalse(acoountsdao.verifyAccount(invalidaccountnumber4));
 	}
 	
 	
@@ -84,7 +83,7 @@ Client obj3=new Client();
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		assertEquals(validdate,obj1.getLastPassbookUpdateDate(validaccountnumber));
+		assertEquals(validdate,acoountsdao.getLastPassbookUpdateDate(validaccountnumber));
 	}
 	
 	
@@ -92,13 +91,13 @@ Client obj3=new Client();
 	@Test
 	public void updateBalanceDaoTest()
 	{
-		assertEquals(17000.0,obj2.updateBalance("300080705006"));
+		assertEquals(17000.0,transactiondao.updateBalance("300080705006"));
 	}
 
 	@Test
 	public void getAccountDetailsDaoTest()
 	{
-		assertTrue(obj1.getAccountDetails("300080705006"));
+		assertTrue(acoountsdao.getAccountDetails("300080705006"));
 	}
 	
 	
@@ -106,7 +105,7 @@ Client obj3=new Client();
 	@Test
 	public void accountSummaryDaoTest() throws ParseException
 	{
-		assertTrue(obj2.accountSummary("300080705006", sdf.parse("15-01-2019"), sdf.parse("20-12-2019")));
+		assertTrue(transactiondao.accountSummary("300080705006", sdf.parse("15-01-2019"), sdf.parse("20-12-2019")));
 	}
 	
 	

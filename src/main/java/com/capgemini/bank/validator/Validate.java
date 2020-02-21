@@ -4,10 +4,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public interface Validate {
-	String ACCOUNT_NUMBER_PATTERN="^[1-9][0-9]{11}";
-	SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd-MM-yyyy");
-	String CHOICE_PATTERN="^[0-9]*";
+public final class Validate {
+	private Validate()
+	{
+		
+	}
+	public static final String CHOICE_PATTERN="^[0-9]*";
+	public static final String ACCOUNT_NUMBER_PATTERN="^[1-9][0-9]{11}";
+	private static final SimpleDateFormat DATEFORMAT = new SimpleDateFormat("dd-MM-yyyy");
+	
 
 	public static boolean validatePattern(String data,String pattern)
 	{
@@ -32,6 +37,7 @@ public interface Validate {
 			}
 		} catch (ParseException e) {
 			
+			e.getMessage();
 			return null;
 		}	
 	}
